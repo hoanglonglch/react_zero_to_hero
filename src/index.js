@@ -3,12 +3,11 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 import 'tachyons';
-import CardList from "./CardList";
-import {robots} from "./robotsConstant";
+import App from "./App";
 
 ReactDOM.render(
-    <div>`
-        <CardList robots={robots}/>
+    <div>
+        <App/>
     </div>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change

@@ -29,4 +29,34 @@ export const robots = [
         username: 'long',
         email: 'long@email.com'
     },
+    {
+        id:6,
+        name: 'philip',
+        username: 'long',
+        email: 'long@email.com'
+    },
+    {
+        id:7,
+        name: 'tilden',
+        username: 'long',
+        email: 'long@email.com'
+    },
+    {
+        id:8,
+        name: 'talor',
+        username: 'long',
+        email: 'long@email.com'
+    },
+    {
+        id:9,
+        name: 'missy',
+        username: 'long',
+        email: 'long@email.com'
+    },
+    {
+        id:10,
+        name: 'Nicki',
+        username: 'long',
+        email: 'long@email.com'
+    },
 ];
