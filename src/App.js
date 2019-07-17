@@ -13,7 +13,7 @@ class App extends Component{
         super();
         this.state = {
             robots: robots,
-            searchFiled: ''
+            searchField: ''
         }
     }
 
@@ -22,20 +22,17 @@ class App extends Component{
     }
 
     render(){
-        // bug
         const filteredRobots =  this.state.robots.filter(robot =>{
-            console.log(robot.name.toLowerCase().includes(this.state.searchFiled.toLowerCase()), robot.name);
-            return robot.name.toLowerCase().includes(this.state.searchFiled.toLowerCase())
+            return robot.name.toLowerCase().includes(this.state.searchField.toLowerCase())
         });
 
-        console.log('filteredRobots', filteredRobots);
         return(
             <div className="tc">
                 <h1>Robos Friends</h1>
                 <SearchBox
                     searchField={this.state.searchFiled}
                     searchChange={this.onSearchChange}/>
-                <CardList robots={robots}/>
+                <CardList robots={filteredRobots}/>
             </div>
         );
     }
