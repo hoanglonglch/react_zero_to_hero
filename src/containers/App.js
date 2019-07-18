@@ -1,13 +1,8 @@
 import React, {Component} from 'react';
 import CardList from "../components/CardList";
-import {robots} from "../robotsConstant";
 import SearchBox from "../components/SearchBox";
 import Scroll from "../components/Scroll";
-import ErrorBoundry from "../components/ErrorBoundry";
-
-const state = {
-
-};
+import ErrorBoundary from "../components/ErrorBoundary";
 
 class App extends Component{
 
@@ -45,9 +40,9 @@ class App extends Component{
                         searchField={this.state.searchFiled}
                         searchChange={this.onSearchChange}/>
                     <Scroll>
-                        <ErrorBoundry>
+                        <ErrorBoundary>
                             <CardList robots={filteredRobots}/>
-                        </ErrorBoundry>
+                        </ErrorBoundary>
                     </Scroll>
 
                 </div>
