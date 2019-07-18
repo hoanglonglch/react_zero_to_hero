@@ -3,6 +3,7 @@ import CardList from "../components/CardList";
 import {robots} from "../robotsConstant";
 import SearchBox from "../components/SearchBox";
 import Scroll from "../components/Scroll";
+import ErrorBoundry from "../components/ErrorBoundry";
 
 const state = {
 
@@ -44,7 +45,9 @@ class App extends Component{
                         searchField={this.state.searchFiled}
                         searchChange={this.onSearchChange}/>
                     <Scroll>
-                        <CardList robots={filteredRobots}/>
+                        <ErrorBoundry>
+                            <CardList robots={filteredRobots}/>
+                        </ErrorBoundry>
                     </Scroll>
 
                 </div>
