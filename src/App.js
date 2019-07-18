@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import CardList from "./CardList";
 import {robots} from "./robotsConstant";
 import SearchBox from "./SearchBox";
+import Scroll from "./Scroll";
 
 const state = {
 
@@ -41,10 +42,14 @@ class App extends Component{
                     <SearchBox
                         searchField={this.state.searchFiled}
                         searchChange={this.onSearchChange}/>
-                    <CardList robots={filteredRobots}/>
+                    <Scroll>
+                        <CardList robots={filteredRobots}/>
+                    </Scroll>
+
                 </div>
             );
         }
+
     }
 }
 
