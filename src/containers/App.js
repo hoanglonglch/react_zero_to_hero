@@ -3,6 +3,8 @@ import CardList from "../components/CardList";
 import SearchBox from "../components/SearchBox";
 import Scroll from "../components/Scroll";
 import ErrorBoundary from "../components/ErrorBoundary";
+import {connect} from "react-redux";
+import mapStateToProps from "react-redux/es/connect/mapStateToProps";
 
 class App extends Component{
 
@@ -14,43 +16,30 @@ class App extends Component{
         }
     }
 
-    componentDidMount() {
-        fetch('https://jsonplaceholder.typicode.com/users')
-            .then(response => response.json())
-            .then(data => this.setState({robots: data}));
-    }
-
-    onSearchChange = (event) =>{
-        this.setState({searchField: event.target.value});
+    getMessage(){
+        this.props.printHello();
     }
 
     render(){
-        const {robots, searchField} = this.state;
-        const filteredRobots =  robots.filter(robot =>{
-            return robot.name.toLowerCase().includes(searchField.toLowerCase())
-        });
-
-        if(!robots.length){
-            return <h1>Loading</h1>
-        }else{
-            return(
-                <div className="tc">
-                    <h1>Robos Friends</h1>
-                    <SearchBox
-                        searchField={this.state.searchFiled}
-                        searchChange={this.onSearchChange}/>
-                    <Scroll>
-                        <ErrorBoundary>
-                            <CardList robots={filteredRobots}/>
-                        </ErrorBoundary>
-                    </Scroll>
-
-                </div>
-            );
-        }
+        return(
+            <div className="tc">
+                <h1>Robos Friends</h1>
+                <button onClick={}>Get Message</button>
+                {this.props.message}
+            </div>
+        );
 
     }
 }
 
-export default App;
+const mapActionsToProps = {
+    hello: printHello
+}
+
+const mapStateToProps = ()=>{
+    console.log(`4 mapStateToProps -> ${JSON.stringify(state.data)}`);
+    return {message: this.state.data.message}
+}
+
+export default connect(mapStateToProps, mapActionsToProps)(App);
 
