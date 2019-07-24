@@ -7,6 +7,7 @@ import {connect} from 'react-redux'
 import {setSearchField} from "../actions";
 
 const mapStateToProps = state =>{
+    console.log('4 [Store]');
     return {
         searchField: state.searchField
     }
@@ -14,7 +15,10 @@ const mapStateToProps = state =>{
 
 const mapDispatchToProps = (dispatch) =>{
     return {
-        onSearchChange: (event) => dispatch(setSearchField(event.target.value))
+        onSearchChange: (event) => {
+            console.log('1. [Event]', event);
+            return dispatch(setSearchField(event.target.value));
+        }
     }
 }
 
