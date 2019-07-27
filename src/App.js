@@ -8,7 +8,8 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            robots: []
+            robots: [],
+            searchField: ''
         }
     }
 
@@ -22,12 +23,20 @@ class App extends React.Component {
             })
     }
 
+    onChangeText = (event)=>{
+        this.setState({
+            searchField: event.target.value
+        });
+    }
+
     render() {
-    return (
+        let filteredRobots = this.state.robots.filter(robot => robot.name.toLowerCase().includes(this.state.searchField));
+
+        return (
         <div className="tc">
           <h1>My Robots</h1>
-          <SearchBox></SearchBox>
-          <CardList robots={this.state.robots}/>
+          <SearchBox onChangeText={this.onChangeText}></SearchBox>
+          <CardList robots={filteredRobots}/>
         </div>
     );
   }
