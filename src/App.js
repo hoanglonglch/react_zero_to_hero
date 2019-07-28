@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Page1 from "./components/Page1";
+import AsyncComponent from "./components/AsyncComponent";
 
 class App extends React.Component {
 
@@ -8,44 +9,28 @@ class App extends React.Component {
         super(props, context);
         this.state = {
             route: 'page1',
-            component: ''
+            component: null
         };
     }
 
     onRouteChange = (route) => {
-        console.log('log');
-        if(route === 'page1'){
-            this.setState({route: route});
-
-        }else if(route === 'page2'){
-            import('./components/Page2').then(Page2=>{
-                console.log('Page2', Page2);
-                this.setState({
-                   route: route,
-                   component: Page2.default
-                });
-            });
-
-        }else if(route === 'page3'){
-            import('./components/Page3').then(Page3=>{
-                this.setState({
-                    route: route,
-                    component: Page3.default
-                });
-            });
-        }
+        this.setState({route: route});
     }
 
 
     render() {
         let route = this.state.route;
-        if(route == 'page1'){
-            return <Page1 onRouteChange={this.onRouteChange}></Page1>
+        if (route == 'page1') {
+            return <Page1 onRouteChange={this.onRouteChange}></Page1>;
 
-        }else{
-            return <this.state.component onRouteChange={this.onRouteChange}/>;
+        } else if (route == 'page2') {
+            const AsyncPage2 = AsyncComponent(() => import('./components/Page2'));
+            return <AsyncPage2 onRouteChange={this.onRouteChange}/>
+        } else {
+            const AsyncPage3 = AsyncComponent(() => import('./components/Page3'));
+            return <AsyncPage3 onRouteChange={this.onRouteChange}/>
+
         }
-
     }
 }
 
