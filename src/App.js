@@ -34,15 +34,17 @@ class App extends React.Component {
         let filteredRobots = this.state.robots.filter(robot => robot.name.toLowerCase().includes(this.state.searchField));
 
         return (
-        <div className="tc">
-          <h1>My Robots</h1>
-          <SearchBox onChangeText={this.onChangeText}></SearchBox>
-            <Scroll>
-                <CardList robots={filteredRobots}/>
-            </Scroll>
-        </div>
-    );
-  }
+            <div className="tc">
+                <h1>My Robots</h1>
+                <SearchBox onChangeText={this.onChangeText}></SearchBox>
+                <Scroll>
+                    {
+                        filteredRobots.length == 0 ? <h1>Loading</h1> : <CardList robots={filteredRobots}/>
+                    }
+                </Scroll>
+            </div>
+        );
+    }
 }
 
 
