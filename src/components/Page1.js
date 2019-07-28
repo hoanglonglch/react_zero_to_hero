@@ -10,8 +10,8 @@ const Page1 = ({onRouteChange}) => {
                     Edit <code>src/App.js</code> and save to reload.
                 </p>
                 <button className="disabled">Page1</button>
-                <button onClick={()=>onRouteChange('route2')}>Page2</button>
-                <button onClick={()=>onRouteChange('route3')}>Page3</button>
+                <button onClick={()=>onRouteChange('page2')}>Page2</button>
+                <button onClick={()=>onRouteChange('page3')}>Page3</button>
             </header>
         </div>
     );
