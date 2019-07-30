@@ -2,6 +2,7 @@
   "name": "myrobos",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://hoanglonglch.github.io/react_zero_to_hero",
   "dependencies": {
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
@@ -12,8 +13,10 @@
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && cp manifest.json build/ && sw-precache --root='build/' --static-file-globs='build/**/!(*map*)'",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -33,6 +36,9 @@
     ]
   },
   "devDependencies": {
+    "gh-pages": "^2.0.1",
+    "react-scripts": "0.2.1",
+    "sw-precache": "^4.0.0",
     "tachyons": "^4.10.0"
   }
 }
